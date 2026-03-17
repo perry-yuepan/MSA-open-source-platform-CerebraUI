@@ -3,6 +3,8 @@
 **Community-Driven AI Interface with Authentication, Research Workflows, and Modular Service Integration**
 
 CerebraUI is an open-source, modular AI platform designed to bring together secure authentication, agent-based research workflows, web-enabled intelligence, and an extensible user interface in a unified Docker-based environment.
+## Brief Introduction
+![CerebraUI Demo](./cerebraui-introduction.GIF)
 
 This project integrates the following core components:
 
