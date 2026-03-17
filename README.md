@@ -6,6 +6,30 @@ CerebraUI is an open-source, modular AI platform designed to bring together secu
 ## Brief Introduction
 ![CerebraUI Demo](./cerebraui-introduction.GIF)
 
+### Key Features
+**Secure authentication and account verification**
+Supports signup, email verification, login, and protected access through a dedicated BetterAuth service with clearer security boundaries.
+
+**Agent-based research workflows**
+Integrates LangFlow and Deep Research to support reusable, multi-step workflows that can be configured once and reused in chat.
+
+**Parallel web search with traceable results**
+Runs concurrent search across multiple sources, applies fallback and filtering strategies, and returns summaries with clickable citations.
+
+**Redis-backed chat caching**
+Speeds up repeated chat retrieval with LRU + TTL caching while preserving safe database fallback.
+
+**ComfyUI-based image generation**
+Based on LLM, OpenAI prompts processor make an optimization on smart image generation experience, Supports text-to-image, image-to-image, and multi-round image generation through a cloud-backed ComfyUI workflow.
+
+**Modular Docker-based deployment**
+Connects authentication, workflows, research services, search, caching, and UI through a shared Docker network for reproducible deployment.
+
+**Improved interface, UI design and usability**
+Rebrands the platform as CerebraUI and improves clarity, consistency, and usability for research-oriented interaction.
+
+---
+
 This project integrates the following core components:
 
 - **BetterAuth** for authentication and account management
@@ -287,8 +311,15 @@ After successful startup, the main services should be available at:
 
 ---
 
+## Testing
+
+Detailed testing methods, scope, module-level validation, and end-to-end verification are documented in the [CerebraUI Testing README](./CerebraUI_Testing_README.md).
+
+---
+
 ## Conclusion
 
 CerebraUI provides a modular and extensible AI interface that combines authentication, workflow orchestration, research assistance, and performance optimization into a unified local deployment architecture.
 
 With BetterAuth initialized first, Cloudflare Turnstile configured correctly, and all services attached to `cerebra_net`, the platform can be launched reliably for development, testing, and workflow experimentation.
+
