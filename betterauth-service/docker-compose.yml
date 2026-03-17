@@ -1,0 +1,38 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: cerebra
+      POSTGRES_PASSWORD: cerebra
+      POSTGRES_DB: cerebra_auth
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cerebra -d cerebra_auth"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    # map a host port so we can run migrations from Windows in the next step
+    ports:
+      - "5433:5432"
+    networks: [cerebra_net]
+
+  betterauth:
+    build:
+      context: .
+    env_file:
+      - ./.env.docker           # uses 'postgres' host inside Docker
+    ports:
+      - "4000:4000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+    networks: [cerebra_net]
+
+volumes:
+  pgdata:
+
+networks:
+  cerebra_net:
+    external: true
